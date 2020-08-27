@@ -1,0 +1,252 @@
+#!/usr/bin/python3
+
+import cgi
+import cgitb
+import datetime
+import hashlib
+import pymongo
+
+class Block:
+    def __init__(self, index, data, timestamp, p_hash):
+        self.index = index
+        self.data = data
+        self.timestamp = timestamp
+        self.p_hash = p_hash
+        self.hash = self.hashing()
+
+    def hashing(self):
+        h = hashlib.sha256()
+        h.update(str(self.index).encode("UTF-8"))
+        h.update(str(self.data).encode("UTF-8"))
+        h.update(str(self.timestamp).encode("UTF-8"))
+        h.update(str(self.p_hash).encode("UTF-8"))
+        return h.hexdigest()
+
+class Chain:
+    def __init__(self):
+        self.blocks = [self.initial_block()]
+
+    def chain_size(self):
+        return len(self.blocks) - 1
+
+    def add_block(self, data):
+        self.blocks.append(Block(len(self.blocks),
+            data,
+            datetime.datetime.utcnow(),
+            self.blocks[len(self.blocks) - 1].hash))
+
+    def initial_block(self):
+        return Block(0, "Blockchain starts here!",
+            datetime.datetime.utcnow(), "Hash Code!")
+
+cgitb.enable()
+form = cgi.FieldStorage()
+
+companyname = "empty"
+businesstype = "empty"
+organizationsize = "empty"
+numberofworkstations = "empty"
+numberofservers = "empty"
+editor = "empty"
+typeofpolicy = "empty"
+result = "empty"
+gen = "empty"
+infotype = [
+    "start",
+    "companyname",
+    "businesstype",
+    "organizationsize",
+    "numberofworkstations",
+    "numberofservers",
+    "editor",
+    "typeofpolicy",
+    "result"
+    ]
+
+if form.getvalue("companyname"):
+    companyname = form.getvalue("companyname")
+
+if form.getvalue("businesstype"):
+    businesstype = form.getvalue("businesstype")
+
+if form.getvalue("organizationsize"):
+    organizationsize = form.getvalue("organizationsize")
+
+if form.getvalue("numberofworkstations"):
+    numberofworkstations = form.getvalue("numberofworkstations")
+
+if form.getvalue("numberofservers"):
+    numberofservers = form.getvalue("numberofservers")
+
+if form.getvalue("editor"):
+    editor = form.getvalue("editor")
+
+if form.getvalue("typeofpolicy"):
+    typeofpolicy = form.getvalue("typeofpolicy")
+
+if form.getvalue("gen"):
+    gen = form.getvalue("gen")
+
+
+print("Content-type:text/html\r\n\r\n")
+
+print("""
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Security Regulation Generator</title>
+<style type="text/css">
+    #CompanyInformation {
+        width: 800px;
+        margin: 100px auto;
+    }
+    
+    table, th, td {
+        border: 1px solid white;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+</style>
+</head>
+""")
+
+if gen == "empty":
+    print("""
+<body>
+<div id="CompanyInformation">
+    <form method="post">
+    <fieldset>
+    <legend>Enter company information</legend>
+        <table style="width:100%;">
+        <tr>
+        <td colspan="2">
+        <label for="companyname">Name of Company</label>
+        <br />
+        <input type="text" id="companyname" name="companyname" style="width:100%;" />
+        </td>
+        </tr>
+        <tr>
+        <td style="width:50%;">
+        <label for="businesstype">Type of Business</label>
+        <br />
+        <select id="businesstype" name="businesstype" style="width:150px;">
+            <option value="">-</option>
+            <option value="Education">Education</option>
+            <option value="Retail">Retail</option>
+            <option value="Financial Services">Financial Services</option>
+            <option value="IT Services">IT Services</option>
+            <option value="Legal Services">Legal Services</option>
+            <option value="Other">Other</option>
+        </select>
+        </td>
+        <td style="width:50%;">
+        <label for="organizationsize">Size of Organization</label>
+        <br />
+        <select id="organizationsize" name="organizationsize" style="width:150px;">
+            <option value="">-</option>
+            <option value="10">< 10 employees</option>
+            <option value="1150">11 ~ 50 employees</option>
+            <option value="51200">51 ~ 200 employees</option>
+            <option value="201">> 201 employees</option>
+        </select>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <label for="numberofworkstations">Number of Workstations</label>
+        <br />
+        <select id="numberofworkstations" name="numberofworkstations" style="width:150px;">
+            <option value="">-</option>
+            <option value="10">< 10 workstations</option>
+            <option value="1150">11 ~ 50 workstations</option>
+            <option value="51200">51 ~ 200 workstations</option>
+            <option value="201">> 201 workstations</option>
+        </select>
+        </td>
+        <td>
+        <label for="numberofservers">Number of Servers</label>
+        <br />
+        <select id="numberofservers" name="numberofservers" style="width:150px;">
+            <option value="">-</option>
+            <option value="0">0 servers</option>
+            <option value="15">1 ~ 5 servers</option>
+            <option value="615">6 ~ 15 servers</option>
+            <option value="15">> 15 servers</option>
+        </select>
+        </td>
+        </tr>
+        <tr>
+        <td></td>
+        </tr>
+        <tr>
+        <td>
+        <label for="editor">Editor</label>
+        <br />
+        <input type="text" id="editor" name="editor" style="width:150px;" />
+        </td>
+        </tr>
+        <tr>
+        <td colspan="2">
+        <label for="typeofpolicy">Type of  policy to be generated: </label>
+        <select id="typeofpolicy" name="typeofpolicy" style="width:150px;">
+            <option value="">-</option>
+            <option value="WiFi">WiFi Policy</option>
+        </select>
+        <input type="submit" id="gen" name="gen" value="Generate" />
+        </td>
+        </tr>
+    </table>
+    </fieldset>
+    </form>
+</div>
+</body>
+</html>
+    """)
+elif gen == "Generate":
+    document = Chain()
+
+    document.add_block(companyname)
+    document.add_block(businesstype)
+    document.add_block(organizationsize)
+    document.add_block(numberofworkstations)
+    document.add_block(numberofservers)
+    document.add_block(editor)
+    document.add_block(typeofpolicy)
+    document.add_block(result)
+
+    client = pymongo.MongoClient("mongodb://127.0.0.1:27017")
+
+    database = client["database"]
+
+    collection = database["collection"]
+
+    for i in range(document.chain_size() + 1):
+        info = {
+            "index": str(document.blocks[i].index).encode("UTF-8"),
+            "data": str(document.blocks[i].data).encode("UTF-8"),
+            "timestamp": str(document.blocks[i].timestamp).encode("UTF-8"),
+            "p_hash": str(document.blocks[i].p_hash).encode("UTF-8")
+            }
+        collection.insert_one(info)
+
+    print("<body>")
+    print("Generate!")
+    print("<br />")
+    print(client.list_database_names())
+    print("<br />")
+    print(database.list_collection_names())
+    print("<br />")
+    for i in collection.find():
+        print(i)
+        print("<br />")
+    print("</body></html>")
+    collection.drop()
+else:
+    print("<body>")
+    print("Error!")
+    print("</body></html>")
+

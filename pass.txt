@@ -1,0 +1,10 @@
+All passwords are to be treated as sensitive, confidential information.
+Always use different passwords for company accounts whenever possible.
+Do not share passwords with anyone, including administrative assistants or secretaries.
+Passwords should never be written down or stored on-line without encryption.
+Do not reveal a password in email, chat, or other electronic communication.
+Do not speak about a password in front of others.
+Always decline the use of the Remember Password feature of applications.
+Do not reveal a password on questionnaires or security forms.
+Do not hint at the format of a password.
+
