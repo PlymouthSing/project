@@ -1,4 +1,4 @@
-Project Vision
+Project Vision:
 
 The project is about Computer and Information Security Policy Generator for Company.  According to DTI Information Security Breaches Survey 2004, 34% of respondents considered security either ‘difficult’ or ‘very difficult’ to build a business case for a policy, compared to only 3% and 7% for anti-virus software and firewalls.  As a result, there were only 33% companies, on average across all businesses, have their own security policy according to CSBS 2019. Especially the small and micro scale of businesses, they do not have enough budget to employ an information security officer.  So this system will help them to build up some basic security policies on specific I.T. scope.
 
@@ -8,17 +8,20 @@ By combining both two parts, the system should be able to generate a suitable an
 
 
 
-Keywords
+Keywords:
+
 Policy Generator, Machine Learning, Blockchain
 
 
 
-Risk Plan
+Risk Plan:
+
 The most risky of this project is the datasets generating and the part of machine training.  The best practice of the system is to be able to generate those security policies word by word.  It requires english language analysis and trains the machine to have such ability.  However, it is very very difficult to do so in such a 3-month-time.  Instead, the system will be trained to identify the environment parameters, and pick up suitable labeled security policies from policy bank one by one.  On the other hand, if part 1 of the system were totally fail to make up, the machine learning part may be moved to part 2 to train the machine to understand user inputs in human language.
 
 
 
 Trello:
+
 https://trello.com/b/fds6BpZM/prco3041920wongchishing
 
 
