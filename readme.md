@@ -22,4 +22,6 @@ Trello:
 https://trello.com/b/fds6BpZM/prco3041920wongchishing
 
 
-Supervisor: Dr. Steve Furnell, Dr. Ivy Wong
+Supervisor:
+
+Dr. Steve Furnell, Dr. Ivy Wong
