@@ -279,10 +279,10 @@ elif find == "Find" and hashcode != None:
 
 print("Content-type:text/html\r\n\r\n")
 
-#if gen == "Generate" and filled == 1:
-#    print(score)
-#elif find == "Find" and hashcode != None:
-#    print(count)
+if gen == "Generate" and filled == 1:
+    print(score)
+elif find == "Find" and hashcode != None:
+    print(count)
 
 print("""
 <html>
@@ -569,32 +569,32 @@ print("""
 """)
 
 
-#if gen == "Generate" and filled == 1:
-#    print(document.chain_size())
-#    print("<br />")
-#    
-#    for i in range(document.chain_size() + 1):
-#        print(document.blocks[i].index)
-#        print("<br />")
-#        print(document.blocks[i].data)
-#        print("<br />")
-#        print(document.blocks[i].timestamp)
-#        print("<br />")
-#        print(document.blocks[i].p_hash)
-#        print("<br />")
+if gen == "Generate" and filled == 1:
+    print(document.chain_size())
+    print("<br />")
+    
+    for i in range(document.chain_size() + 1):
+        print(document.blocks[i].index)
+        print("<br />")
+        print(document.blocks[i].data)
+        print("<br />")
+        print(document.blocks[i].timestamp)
+        print("<br />")
+        print(document.blocks[i].p_hash)
+        print("<br />")
 
 
-#client = pymongo.MongoClient("mongodb://127.0.0.1:27017")
-#database = client["database"]
-#collection = database["collection"]
-#print(client.list_database_names())
-#print("<br />")
-#print(database.list_collection_names())
-#print("<br />")
+client = pymongo.MongoClient("mongodb://127.0.0.1:27017")
+database = client["database"]
+collection = database["collection"]
+print(client.list_database_names())
+print("<br />")
+print(database.list_collection_names())
+print("<br />")
 
-#for i in collection.find():
-#    print(i)
-#    print("<br />")
+for i in collection.find():
+    print(i)
+    print("<br />")
 
 #collection.drop()
 
