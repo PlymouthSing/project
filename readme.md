@@ -9,7 +9,6 @@ By combining both two parts, the system should be able to generate a suitable an
 
 
 Keywords:
-
 Policy Generator, Machine Learning, Blockchain
 
 
@@ -21,10 +20,10 @@ The most risky of this project is the datasets generating and the part of machin
 
 
 Trello:
-
 https://trello.com/b/fds6BpZM/prco3041920wongchishing
 
 
 
 Supervisor: Dr. Steve Furnell
+
 Marker: Ivy Wong
