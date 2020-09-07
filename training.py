@@ -60,18 +60,20 @@ dump(vectorizer, open("wifi.pkl", "wb"))
 #password_pkl = load(open("password.pkl", "rb"))
 #wifi_pkl = load(open("wifi.pkl", "rb"))
 
-#v = wifi_pkl.transform(password_rule)
+#v = wifi_pkl.transform(wifi_rule)
 
-##print(password_rule)
-##print()
+#print(wifi_rule)
+#print()
 
 #print(wifi_pkl.vocabulary_)
+#print()
+
+#print(wifi_pkl.get_feature_names())
 #print()
 
 #print(v.toarray())
 #print()
 
-#print(wifi_pkl.get_feature_names())
 
 #for i in v.toarray():
 #    for key, value in wifi_pkl.vocabulary_.items():
