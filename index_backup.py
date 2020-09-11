@@ -247,9 +247,10 @@ elif find == "Find" and hashcode != None:
     query = {"p_hash": hashcode}
     target = collection.find_one(query)
     
-    h = int(str(target["_id"]), 16) - 9
-    query = {"_id": ObjectId(format(h, "x"))}
-    target = collection.find_one(query)
+    if target:
+        h = int(str(target["_id"]), 16) - 9
+        query = {"_id": ObjectId(format(h, "x"))}
+        target = collection.find_one(query)
     
     if target:
         vdoc = vChain(target["timestamp"])
@@ -262,8 +263,6 @@ elif find == "Find" and hashcode != None:
             vdoc.add_block(target["data"], target["timestamp"])
             count += 1
     
-    query = {"p_hash": hashcode}
-    target = collection.find_one(query)
     if count == 9:
         companyname = vdoc.blocks[1].data
         businesstype = vdoc.blocks[2].data
