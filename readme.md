@@ -1,3 +1,7 @@
+Demo:
+
+http://18.163.185.9/project/
+
 Project Vision:
 
 The project is about Computer and Information Security Policy Generator for Company.  According to DTI Information Security Breaches Survey 2004, 34% of respondents considered security either ‘difficult’ or ‘very difficult’ to build a business case for a policy, compared to only 3% and 7% for anti-virus software and firewalls.  As a result, there were only 33% companies, on average across all businesses, have their own security policy according to CSBS 2019. Especially the small and micro scale of businesses, they do not have enough budget to employ an information security officer.  So this system will help them to build up some basic security policies on specific I.T. scope.
